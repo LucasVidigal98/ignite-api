@@ -1,10 +1,10 @@
-import { User } from '../model/User';
+import { User } from '../entities/User';
 import { IUserDTO } from './DTO/IUserDTO';
 
 interface IUserRepository {
 
-  create({name, email, password}: IUserDTO): User;
-  list(): User[] | undefined;
+  create({name, email, password}: IUserDTO): Promise<User>;
+  list(): Promise<User[]>;
 
 }
 

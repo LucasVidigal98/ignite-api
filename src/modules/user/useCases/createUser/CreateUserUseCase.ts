@@ -1,4 +1,6 @@
-import { User } from '../../model/User';
+import { inject, injectable } from 'tsyringe';
+
+import { User } from '../../entities/User';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 
@@ -8,11 +10,19 @@ interface IRequest {
   password: string;
 }
 
+@injectable()
 class CreateUserUseCase {
-  constructor(private userRepository: IUserRepository) {}
+  constructor(
+    @inject('UserRepository')
+    private userRepository: IUserRepository
+  ) {}
 
-  execute({name, email, password}: IRequest): User{
-    const user = this.userRepository.create({name, email, password});
+  async execute({name, email, password}: IRequest): Promise<User>{
+    const user = await this.userRepository.create({
+      name, 
+      email, 
+      password
+    });
 
     return user;
   }

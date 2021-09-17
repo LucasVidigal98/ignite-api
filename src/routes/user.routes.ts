@@ -1,16 +1,14 @@
 import { Router } from 'express';
 
-import { createUserController } from '../modules/user/useCases/createUser';
-import { listUsersController } from '../modules/user/useCases/listUsers/index';
+import { CreateUserController } from '../modules/user/useCases/createUser/CreateUserController';
+import { ListUserController } from '../modules/user/useCases/listUsers//ListUsersController';
 
 const userRoutes = Router();
 
-userRoutes.post('/', (req, res) => {
-  createUserController.handle(req, res);
-});
+const createUserController = new CreateUserController();
+const listUsersController = new ListUserController();
 
-userRoutes.get('/', (req, res) => {
-  listUsersController.handle(req, res);
-});
+userRoutes.post('/', createUserController.handle);
+userRoutes.get('/', listUsersController.handle);
 
 export { userRoutes };

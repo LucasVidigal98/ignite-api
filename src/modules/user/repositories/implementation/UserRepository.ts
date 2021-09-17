@@ -1,10 +1,12 @@
-import { User } from '../../model/User';
+import { getRepository, Repository } from 'typeorm';
+
+import { User } from '../../entities/User';
 import { IUserDTO } from '../DTO/IUserDTO';
 import { IUserRepository } from '../IUserRepository';
 
 class UserRepository implements IUserRepository {
 
-  private users: User[] | undefined;
+  private repository: Repository<User>;
 
   private static INSTANCE: UserRepository;
 
@@ -17,24 +19,22 @@ class UserRepository implements IUserRepository {
   }
 
   constructor() {
-    this.users = [];
+    this.repository = getRepository(User);
   }
 
-  list(): User[] | undefined {
-    return this.users;
+  async list(): Promise<User[]> {
+    return await this.repository.find();
   }
 
-  create({ name, email, password }: IUserDTO): User {
-    const user = new User();
-
-    Object.assign(user, {
-      name,
-      email,
-      password
+  async create({ name, email, password }: IUserDTO): Promise<User> {
+    const user = this.repository.create({
+       name, 
+       email, 
+       password 
     });
 
-    this.users.push(user);
-
+    await this.repository.save(user);
+    
     return user;
   }
 }
