@@ -8,18 +8,16 @@ class UserRepository implements IUserRepository {
 
   private repository: Repository<User>;
 
-  private static INSTANCE: UserRepository;
-
-  public static getInstance(): UserRepository {
-    if (!UserRepository.INSTANCE) {
-      UserRepository.INSTANCE = new UserRepository();
-    }
-
-    return UserRepository.INSTANCE;
-  }
-
   constructor() {
     this.repository = getRepository(User);
+  }
+  
+  async findById(id: string): Promise<User | undefined> {
+    return await this.repository.findOne(id);
+  }
+
+  async findByEmail(email: string): Promise<User | undefined> {
+    return await this.repository.findOne({ where: { email } });
   }
 
   async list(): Promise<User[]> {

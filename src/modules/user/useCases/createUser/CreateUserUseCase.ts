@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { hash } from  'bcrypt';
 
 import { User } from '../../entities/User';
 import { IUserRepository } from '../../repositories/IUserRepository';
@@ -18,10 +19,12 @@ class CreateUserUseCase {
   ) {}
 
   async execute({name, email, password}: IRequest): Promise<User>{
+    const hashedPassword = await hash(password, 8);
+
     const user = await this.userRepository.create({
       name, 
       email, 
-      password
+      password: hashedPassword
     });
 
     return user;
