@@ -4,22 +4,25 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 @Entity("users_tmg")
 class User {
   @PrimaryColumn()
-  id: string;
+  id: string = '';
 
   @Column()
-  name: string;
+  name: string = "";
 
   @Column()
-  email: string;
+  email: string = "";
 
   @Column()
-  password: string;
+  password: string = "";
   
   @CreateDateColumn()
-  created_at: Date;
+  created_at: Date = new Date();
+
+  @Column()
+  avatar: string = "";
 
   constructor() {
-    if(!this.id) {
+    if(this.id === '') {
       this.id = uuidV4();
     }
   }
