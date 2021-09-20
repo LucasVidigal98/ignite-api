@@ -4,9 +4,9 @@ import "reflect-metadata";
 import { userRoutes } from './routes/user.routes';
 import { authenticateRoutes } from './routes/authenticate.routes';
 
-import "./database";
+import "./typeorm";
 
-import "./shared/container";
+import "./container";
 
 const app = express();
 

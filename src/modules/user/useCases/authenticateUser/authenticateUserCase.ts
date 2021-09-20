@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 
-import { User } from "../../entities/User";
+import { User } from "../../infra/typeorm/entities/User";
 import { IUserRepository } from "../../repositories/IUserRepository";
 
 interface IRequest {

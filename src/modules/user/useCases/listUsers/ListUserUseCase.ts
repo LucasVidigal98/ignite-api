@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { User } from '../../entities/User';
-import { UserRepository } from '../../repositories/implementation/UserRepository';
+import { User } from '../../infra/typeorm/entities/User';
+import { UserRepository } from '../../infra/typeorm/repositories/UserRepository';
 
 @injectable()
 class ListUserUseCase {

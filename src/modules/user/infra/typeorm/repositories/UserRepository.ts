@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { User } from '../../entities/User';
-import { IUserDTO } from '../DTO/IUserDTO';
-import { IUserRepository } from '../IUserRepository';
+import { User } from '../entities/User';
+import { IUserDTO } from '../../../repositories/DTO/IUserDTO';
+import { IUserRepository } from '../../../repositories/IUserRepository';
 
 class UserRepository implements IUserRepository {
 

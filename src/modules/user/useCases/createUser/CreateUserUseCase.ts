@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { hash } from  'bcrypt';
 
-import { User } from '../../entities/User';
+import { User } from '../../infra/typeorm/entities/User';
 import { IUserRepository } from '../../repositories/IUserRepository';
 
 
