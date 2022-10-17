@@ -1,9 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
-import { User } from "../../../user/infra/typeorm/entities/User";
-import { IUserRepository } from "../../../user/repositories/IUserRepository";
-import { Room } from "../../infra/typeorm/entities/Room";
-import { IRoomRepository } from "../../repositories/IRoomRepository";
+import { IUserRepository } from "@modules/user/repositories/IUserRepository";
+import { Room } from "@modules/room/infra/typeorm/entities/Room";
+import { IRoomRepository } from "@modules/room/repositories/IRoomRepository";
 
 interface IRequest {
   name: string;

@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 import { hash } from  'bcrypt';
 
-import { User } from '../../infra/typeorm/entities/User';
-import { IUserRepository } from '../../repositories/IUserRepository';
+import { User } from '@modules/user/infra/typeorm/entities/User';
+import { IUserRepository } from '@modules/user/repositories/IUserRepository';
 
 
 interface IRequest {

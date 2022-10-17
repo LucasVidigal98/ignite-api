@@ -2,8 +2,7 @@ import { inject, injectable } from "tsyringe";
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 
-import { User } from "../../infra/typeorm/entities/User";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "@modules/user/repositories/IUserRepository";
 
 interface IRequest {
   email: string;
