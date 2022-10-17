@@ -22,6 +22,11 @@ class CreateRoomUseCase {
 
   async execute({ name, description, id }: IRequest): Promise<Room> {
     const userAdmin = await this.userRepository.findById(id);
+
+    if(!userAdmin) {
+      throw new Error(`User with id ${id} is not found`);
+    }
+
     const room = await this.roomRepository.create({name, description, userAdmin, users: userAdmin});
     return room;
   }

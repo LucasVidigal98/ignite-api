@@ -9,7 +9,7 @@ class RoomRepository implements IRoomRepository {
 
   async create({ name, description, userAdmin }: IRoomDTO): Promise<Room> {
     const room = new Room();
-    Object.assign(room, { name, description, usersAdmin: [userAdmin.id] });
+    Object.assign(room, { name, description, usersAdmin: [userAdmin.id], users: [userAdmin.id] });
     this.rooms.push(room);
 
     return room;

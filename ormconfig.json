@@ -1,12 +1,12 @@
 {
-  "username": "postgres",
-  "password": "docker",
+  "username": "root",
+  "password": "root",
 
   "type": "postgres",
   "name": "default",
   "host": "localhost",
   "port": 5432,
-  "database": "queries_challenge",
+  "database": "teste_cash",
   "entities": ["./src/modules/**/entities/*.ts"],
   "migrations": ["./src/shared/typeorm/migrations/*.ts"],
   "cli": {
