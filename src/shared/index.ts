@@ -1,9 +1,9 @@
 import express from 'express';
 import "reflect-metadata";
 
-import { userRoutes } from './routes/user.routes';
-import { authenticateRoutes } from './routes/authenticate.routes';
-import { roomRoutes } from './routes/room.routes';
+import { userRoutes } from '@shared/infra/http/routes/user.routes';
+import { authenticateRoutes } from '@shared/infra/http/routes/authenticate.routes';
+import { roomRoutes } from '@shared/infra/http/routes/room.routes';
 
 import "./typeorm";
 
