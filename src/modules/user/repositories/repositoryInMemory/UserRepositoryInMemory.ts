@@ -2,7 +2,7 @@ import { User } from "../../infra/typeorm/entities/User";
 import { IUserDTO } from "../DTO/IUserDTO";
 import { IUserRepository } from "../IUserRepository";
 
-class UserRepositoryInMemory implements IUserRepository {
+class UserRepository implements IUserRepository {
   users: User[] = [];
 
   async create({ name, email, password, id, avatar }: IUserDTO): Promise<User> {
@@ -26,4 +26,4 @@ class UserRepositoryInMemory implements IUserRepository {
   }
 }
 
-export { UserRepositoryInMemory };
+export { UserRepository };

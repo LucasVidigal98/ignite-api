@@ -1,5 +1,5 @@
 import { IUserDTO } from "../../repositories/DTO/IUserDTO";
-import { UserRepositoryInMemory } from "../../repositories/in-memory/UserRepositoryInMemory";
+import { UserRepository } from "../../repositories/repositoryInMemory/UserRepositoryInMemory";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./authenticateUserCase";
 
@@ -7,10 +7,10 @@ describe('Autheticate User', () => {
 
   let authenticateUserUseCase: AuthenticateUserUseCase;
   let createUserUseCase: CreateUserUseCase;
-  let userRepositoryInMemory: UserRepositoryInMemory;
+  let userRepositoryInMemory: UserRepository;
 
   beforeEach(async () => {
-    userRepositoryInMemory = new UserRepositoryInMemory();
+    userRepositoryInMemory = new UserRepository();
     authenticateUserUseCase = new AuthenticateUserUseCase(userRepositoryInMemory);
     createUserUseCase = new CreateUserUseCase(userRepositoryInMemory);
   });

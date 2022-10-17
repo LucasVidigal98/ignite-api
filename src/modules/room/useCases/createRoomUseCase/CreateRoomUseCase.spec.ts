@@ -1,4 +1,4 @@
-import { UserRepositoryInMemory } from "../../../user/repositories/in-memory/UserRepositoryInMemory";
+import { UserRepository } from "../../../user/repositories/repositoryInMemory/UserRepositoryInMemory";
 import { IRoomRepository } from "../../repositories/IRoomRepository";
 import { RoomRepository } from "../../repositories/repositoryInMemory/RoomRepository";
 import { CreateRoomUseCase } from "./CreateRoomUseCase";
@@ -6,12 +6,12 @@ import { CreateRoomUseCase } from "./CreateRoomUseCase";
 let roomRepository: IRoomRepository;
 let createRoomUseCase: CreateRoomUseCase;
 
-let userRepositoryInMemory: UserRepositoryInMemory;
+let userRepositoryInMemory: UserRepository;
 
 describe('#createRoomUseCase', () => {
   beforeEach(async () => {
     roomRepository = new RoomRepository();
-    userRepositoryInMemory = new UserRepositoryInMemory();
+    userRepositoryInMemory = new UserRepository();
     
     await userRepositoryInMemory.create({ email: 'teste@teste.com', name: 'fulano', password: '123', avatar: '', id: '123' })
 

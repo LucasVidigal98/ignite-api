@@ -1,12 +1,12 @@
-import { UserRepositoryInMemory } from "../../repositories/in-memory/UserRepositoryInMemory";
+import { UserRepository} from "../../repositories/repositoryInMemory/UserRepositoryInMemory";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 let createUserUseCase: CreateUserUseCase;
-let userRepositoryInMemory: UserRepositoryInMemory;
+let userRepositoryInMemory: UserRepository;
 
 describe('Create User', () => {
   beforeEach(() => {
-    userRepositoryInMemory = new UserRepositoryInMemory();
+    userRepositoryInMemory = new UserRepository();
     createUserUseCase = new CreateUserUseCase(userRepositoryInMemory);
   });
 

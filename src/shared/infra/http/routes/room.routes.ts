@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { CreateRoomController} from '../../modules/room/useCases/createRoomUseCase/CreateRoomController';
-import { ensureAuthenticated } from '../http/middlewares/ensureAuthenticated';
+import { CreateRoomController} from '@modules/room/useCases/createRoomUseCase/CreateRoomController';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
 
 const roomRoutes = Router();
 
