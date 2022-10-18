@@ -13,6 +13,8 @@ async function create() {
     INSERT INTO users_tmg (id, name, email, password, created_at, is_admin)
     values('${id}', 'admin', 'admin@ignite.com', '${password}', 'now()', true)
   `)
+
+  await connection.close();
 }
 
 create().then(() => console.log('User Admin is created'));
