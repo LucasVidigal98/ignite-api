@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { CreateLogUseCase } from '../createLogUseCase/createLogUseCase';
 
 import { CreateRoomUseCase } from './CreateRoomUseCase';
 
@@ -10,6 +11,9 @@ class CreateRoomController {
     const { id } = req.user;
     const createRoomUseCase = container.resolve(CreateRoomUseCase);
     const room = await createRoomUseCase.execute({ name, description, id });
+
+    const createLogUseCase = container.resolve(CreateLogUseCase);
+    await createLogUseCase.execute({ description: 'Create a new Room', room: room, user: id });
 
     return res.json(room);
   }

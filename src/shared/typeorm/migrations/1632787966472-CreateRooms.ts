@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class CreateRooms1632787966472 implements MigrationInterface {
 

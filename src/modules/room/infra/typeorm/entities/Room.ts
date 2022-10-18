@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
 import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
 
-import { User } from "../../../../user/infra/typeorm/entities/User";
+import { User } from "@modules/user/infra/typeorm/entities/User";
 
 @Entity("rooms")
 class Room {

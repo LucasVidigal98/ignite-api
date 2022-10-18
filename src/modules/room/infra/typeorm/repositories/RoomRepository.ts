@@ -16,6 +16,7 @@ class RoomRepository implements IRoomRepository {
       users,
       name,
       description,
+      usersAdmin: userAdmin
     });
 
     await this.repository.save(room);
