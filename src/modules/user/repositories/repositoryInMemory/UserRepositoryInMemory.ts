@@ -6,7 +6,7 @@ class UserRepository implements IUserRepository {
   users: User[] = [];
 
   async create({ name, email, password, id, avatar }: IUserDTO): Promise<User> {
-    const user: User = { name, email, password, id: '123', avatar: '', created_at: new Date() };
+    const user: User = { name, email, password, id: '123', avatar: '', created_at: new Date(), is_admin: false };
 
     this.users.push(user);
 
