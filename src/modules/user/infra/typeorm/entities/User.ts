@@ -21,6 +21,9 @@ class User {
   @Column()
   avatar: string = "";
 
+  @Column()
+  is_admin!: boolean;
+
   constructor() {
     if(this.id === '') {
       this.id = uuidV4();
