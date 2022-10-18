@@ -5,9 +5,11 @@ import { userRoutes } from '@shared/infra/http/routes/user.routes';
 import { authenticateRoutes } from '@shared/infra/http/routes/authenticate.routes';
 import { roomRoutes } from '@shared/infra/http/routes/room.routes';
 
-import "./typeorm";
+import createConnection from "./typeorm";
 
 import "./container";
+
+createConnection();
 
 const app = express();
 
