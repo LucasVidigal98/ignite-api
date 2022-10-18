@@ -14,7 +14,7 @@ class Log {
 
   @OneToOne(() => User)
   @JoinColumn({ name: 'userid' })
-  user!: string;
+  user!: User;
 
   @OneToOne(() => Room)
   @JoinColumn({ name: 'roomid' })

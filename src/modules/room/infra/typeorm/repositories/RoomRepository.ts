@@ -13,7 +13,7 @@ class RoomRepository implements IRoomRepository {
 
   async create({ name, description, userAdmin, users }: IRoomDTO): Promise<Room> {
     const room = this.repository.create({
-      users,
+      users: users,
       name,
       description,
       usersAdmin: userAdmin

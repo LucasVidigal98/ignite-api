@@ -1,29 +1,29 @@
 import { v4 as uuidV4 } from 'uuid';
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
 
 import { User } from "@modules/user/infra/typeorm/entities/User";
 
 @Entity("rooms")
 class Room {
   @PrimaryColumn()
-  id: string = '';
+  id!: string;
 
   @Column()
-  name: string = '';
+  name!: string;
 
   @Column()
-  description: string = '';
+  description!: string;
   
-  @OneToMany(() => User, user => user.id)
-  @JoinColumn({ name: 'id' })
-  users: User | undefined;
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'users' })
+  users!: User;
 
-  @OneToMany(() => User, user => user.id)
-  @JoinColumn({ name: 'id' })
-  usersAdmin: User | undefined;
+  @OneToOne(() => User)
+  @JoinColumn({ name: 'users_admin' })
+  usersAdmin!: User;
 
   @CreateDateColumn()
-  created_at: Date = new Date();
+  created_at!: Date;
 
   constructor() {
     if (!this.id) {

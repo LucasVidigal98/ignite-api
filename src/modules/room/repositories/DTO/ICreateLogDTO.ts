@@ -3,6 +3,6 @@ import { User } from "@modules/user/infra/typeorm/entities/User";
 
 export interface ICreateLogDTO {
   description: string;
-  user: string;
+  user: User;
   room: Room;
 }

@@ -13,7 +13,7 @@ class CreateRoomController {
     const room = await createRoomUseCase.execute({ name, description, id });
 
     const createLogUseCase = container.resolve(CreateLogUseCase);
-    await createLogUseCase.execute({ description: 'Create a new Room', room: room, user: id });
+    await createLogUseCase.execute({ description: 'Create a new Room', room: room, user: room.users });
 
     return res.json(room);
   }
