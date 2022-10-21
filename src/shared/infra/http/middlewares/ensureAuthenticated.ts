@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction, request } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import { UserRepository } from '@modules/user/infra/typeorm/repositories/UserRepository';
+import auth from '@config/auth';
+import { UserTokensRepository } from '@modules/user/infra/typeorm/repositories/UserTokensRepository';
 
 export async function ensureAuthenticated(req: Request, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
@@ -15,12 +16,14 @@ export async function ensureAuthenticated(req: Request, res: Response, next: Nex
   try{
     const { sub: user_id } = verify(
       token, 
-      '16d25979826290c44af324ca0a33b3c9'
+      auth.secret_refresh_token
     ) as { sub: string };
-    const userRepository = new UserRepository();
-    const user = await userRepository.findById(user_id);
+
+    const userTokensRepository = new UserTokensRepository();
+
+    const userToken = await userTokensRepository.findByUserIdAndToken(user_id, token);
     
-    if(!user) { 
+    if(!userToken) { 
       throw new Error('User not found');
     }
 
