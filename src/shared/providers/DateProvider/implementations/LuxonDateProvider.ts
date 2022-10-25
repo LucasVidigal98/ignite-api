@@ -12,7 +12,11 @@ class LuxonDateProvider implements IDateProvider {
   }
   
   getTodayDate(): Date {
-    return DateTime.now().toJSDate();
+    return DateTime.now().toUTC().toJSDate();
+  }
+
+  comapareIfBefore(startDate: Date, endDate: Date): boolean {
+    return DateTime.fromJSDate(startDate).millisecond < DateTime.fromJSDate(endDate).millisecond
   }
 }
 

@@ -4,5 +4,6 @@ import { ICreateUserTokenDTO } from "./DTO/ICreateUserTokenDTO";
 export interface IUserTokensRepository {
   create({ expires_date, refresh_token, user_id }: ICreateUserTokenDTO): Promise<UserTokens>;
   findByUserIdAndToken(userId: string, refresh_token: string): Promise<UserTokens>;
+  findByToken(token: string): Promise<UserTokens | undefined>;
   deleteById(id: string): Promise<void>;
 }
