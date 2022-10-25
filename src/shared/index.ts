@@ -8,6 +8,7 @@ import { roomRoutes } from '@shared/infra/http/routes/room.routes';
 import createConnection from "./typeorm";
 
 import "./container";
+import { passwordRoutes } from './infra/http/routes/password.routes';
 
 createConnection();
 
@@ -16,6 +17,8 @@ const app = express();
 app.use(express.json());
 
 app.use('/user', userRoutes);
+
+app.use('/password', passwordRoutes);
 
 app.use(authenticateRoutes);
 

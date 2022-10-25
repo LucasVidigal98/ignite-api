@@ -10,6 +10,8 @@ import { IUserTokensRepository } from '@modules/user/repositories/IUserTokensRep
 import { UserTokensRepository } from '@modules/user/infra/typeorm/repositories/UserTokensRepository';
 import { IDateProvider } from '@shared/providers/DateProvider/IDateProvider';
 import { LuxonDateProvider } from '@shared/providers/DateProvider/implementations/LuxonDateProvider';
+import { IMailProvider } from '@shared/providers/MailProvider/IMailProvider';
+import { EtherealMailProvider } from '@shared/providers/MailProvider/implementations/EtherealMailProvider';
 
 container.registerSingleton<IUserRepository>(
   'UserRepository',
@@ -35,3 +37,8 @@ container.registerSingleton<IUserTokensRepository>(
   'UserTokensRepository',
   UserTokensRepository
 )
+
+container.registerInstance<IMailProvider>(
+  'EtherealMailProvider',
+  new EtherealMailProvider()
+);
