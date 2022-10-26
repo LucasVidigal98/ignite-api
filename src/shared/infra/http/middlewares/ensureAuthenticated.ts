@@ -16,16 +16,8 @@ export async function ensureAuthenticated(req: Request, res: Response, next: Nex
   try{
     const { sub: user_id } = verify(
       token, 
-      auth.secret_refresh_token
+      auth.secret_token
     ) as { sub: string };
-
-    const userTokensRepository = new UserTokensRepository();
-
-    const userToken = await userTokensRepository.findByUserIdAndToken(user_id, token);
-    
-    if(!userToken) { 
-      throw new Error('User not found');
-    }
 
     request.user = {
       id: user_id

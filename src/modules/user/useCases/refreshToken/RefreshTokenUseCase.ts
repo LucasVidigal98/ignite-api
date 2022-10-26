@@ -9,6 +9,11 @@ interface IPayLoad {
   email: string;
 }
 
+interface ITokenResponse {
+  token: string;
+  refresh_token: string;
+}
+
 @injectable()
 export class RefreshTokenUseCase {
   constructor(
@@ -18,7 +23,7 @@ export class RefreshTokenUseCase {
     private luxonDateProvider: LuxonDateProvider
   ) {}
   
-  async execute(token: string) {
+  async execute(token: string): Promise<ITokenResponse> {
     const { email, sub } = verify(token, auth.secret_refresh_token) as IPayLoad;
 
     const userId = sub;
@@ -40,8 +45,16 @@ export class RefreshTokenUseCase {
       expires_date: this.luxonDateProvider.getNext30Day(),
       user_id: userId,
       refresh_token
-    })
+    });
 
-    return refresh_token;
+    const new_token = sign({ }, auth.secret_token, {
+      subject: userId,
+      expiresIn: auth.expires_in_token,
+    });
+
+    return {
+      token: new_token,
+      refresh_token
+    };
   } 
 }
