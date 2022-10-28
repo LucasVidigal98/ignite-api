@@ -34,6 +34,8 @@
   "dependencies": {
     "aws-sdk": "^2.1241.0",
     "bcrypt": "^5.0.1",
+    "class-transformer": "^0.5.1",
+    "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
