@@ -18,6 +18,9 @@ jobs:
       
       - name: Install Dependencies
         run: yarn
+      
+      - name: Create dist
+        run: mkdir -p dist
         
       - name: Build
         run: yarn build
