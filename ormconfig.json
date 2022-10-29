@@ -6,7 +6,7 @@
   "name": "default",
   "host": "localhost",
   "port": 5432,
-  "database": "teste_cash",
+  "database": "tmg",
   "entities": ["./src/modules/**/entities/*.ts"],
   "migrations": ["./src/shared/typeorm/migrations/*.ts"],
   "cli": {
