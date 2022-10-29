@@ -34,4 +34,17 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: "., !node_modules"
           target: "~/app/ignite-api"
+      
+      - name: Update APi
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/app/ignite-api
+            yarn
+            ./node_modules/.bin/typeorm mifration:run
+            pm2 reload ignite-api
           
