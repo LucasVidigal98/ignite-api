@@ -12,12 +12,15 @@ import { passwordRoutes } from './infra/http/routes/password.routes';
 
 import { config } from 'dotenv';
 import upload from '@config/upload';
+import rateLimiter from './infra/http/middlewares/rateLimiter';
 
 config();
 
 createConnection();
 
 const app = express();
+
+app.use(rateLimiter);
 
 app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`));
 
